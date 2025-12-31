@@ -41,7 +41,10 @@ const Login = ({ redirectTo }) => {
 
   return (
     <>
-      <img src="/download.jpeg" className="expenses"></img>
+      <img
+        src={process.env.PUBLIC_URL + "/download.jpeg"}
+        className="expenses"
+      ></img>
       <div className="register-page">
         {Loading && <Spinner />}
         <Form className="forms" layout="vertical" onFinish={submitHandler}>

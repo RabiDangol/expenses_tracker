@@ -168,7 +168,8 @@ return (
         <div className="content">
             {viewData ==='table' ? <Table columns={columns} dataSource={allTransection}/>
             : <Analytics  allTransection={allTransection}/>}
-            <img src="/cta-programming-img.webp" className='girl'></img>
+            
+            <img src={process.env.PUBLIC_URL +"/cta-programming-img.webp"} className='girl'></img>
         </div>
 
         <Modal title={editable ?'Edit Transaction':'Add Transaction'} 

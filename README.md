@@ -2,6 +2,10 @@
 
 A React app with an Express API and MongoDB for managing expenses.
 
+## Live app
+
+The production frontend is available at [https://expenses-tracker-vk2n.vercel.app](https://expenses-tracker-vk2n.vercel.app).
+
 ## Run locally
 
 1. Install the root dependencies with `npm install`.
@@ -36,5 +40,5 @@ sign in again if that secret changes.
 3. Deploy the project. [`client/vercel.json`](./client/vercel.json) enables
    client-side routes to load directly.
 
-The frontend and API are deployed separately. Add the final Vercel app URL to
-the repository description or this README after Vercel creates the deployment.
+The frontend and API are deployed separately. The Vercel project uses `client`
+as its root directory.

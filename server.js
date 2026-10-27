@@ -19,8 +19,6 @@ import adminRoutes from "./routes/adminRoutes.js";
 
 //config dot env
 dotenv.config();
-console.log("JWT_SECRET:", process.env.JWT_SECRET);
-console.log("connectDb:", connectDb);
 //database
 connectDb();
 //rest object
@@ -30,6 +28,10 @@ const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
+
+app.get("/", (_req, res) => {
+  res.status(200).send("Expenses Tracker API is running.");
+});
 
 //routes
 //user routes

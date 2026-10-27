@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react';
 import {Form, Modal, Input, Button, Select, message, Table, DatePicker } from 'antd';
 import { UnorderedListOutlined, AreaChartOutlined,DeleteOutlined, EditOutlined} from '@ant-design/icons';
 import Layout from '../components/Layouts/Layout';
-import axios from 'axios';
+import axios from '../api';
 import Spinner from '../components/Spinner';
 import moment from 'moment';
 import Analytics from '../components/Analytics';
@@ -65,7 +65,7 @@ useEffect(() => {
             const user =JSON.parse(localStorage.getItem('user'))
             
             setloading(true)
-            const res =await axios.post('http://localhost:5000/api/v1/transection/get-transection',{
+            const res =await axios.post('/transection/get-transection',{
                 userid:user._id,
                 frequency,
                 selectedDate
@@ -112,7 +112,6 @@ const handleDelete =async(record) => {
                 message.success('Transaction updated Successfully')
             }
             else{
-
                 //             const user = JSON.parse(localStorage.getItem('user'));
                 // await axios.get(`http://localhost:5000/api/v1/transection/get-transection?userid=${user._id}`);
                 
@@ -220,4 +219,3 @@ return (
 }
 
 export default HomePage
-

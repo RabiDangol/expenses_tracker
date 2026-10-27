@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../api";
 import Spinner from "../components/Spinner";
 
 const Login = ({ redirectTo }) => {

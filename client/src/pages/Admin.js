@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Table, Button, message } from "antd";
-import axios from "axios";
+import axios from "../api";
 import Layout from "../components/Layouts/Layout";
 
 const Admin = () => {

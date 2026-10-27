@@ -16,7 +16,7 @@ import {
   EditOutlined,
 } from "@ant-design/icons";
 import Layout from "../components/Layouts/Layout";
-import axios from "axios";
+import axios from "../api";
 import Spinner from "../components/Spinner";
 import moment from "moment";
 import Analytics from "../components/Analytics";

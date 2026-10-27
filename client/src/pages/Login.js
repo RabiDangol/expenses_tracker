@@ -28,7 +28,10 @@ const Login = ({ redirectTo }) => {
       }
     } catch (error) {
       setLoading(false);
-      message.error("Something went wrong");
+      message.error(
+        error.response?.data?.message ||
+          "Cannot reach the API. Check the API service and try again."
+      );
     }
   };
 

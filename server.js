@@ -19,8 +19,6 @@ import adminRoutes from "./routes/adminRoutes.js";
 
 //config dot env
 dotenv.config();
-//database
-connectDb();
 //rest object
 const app = express();
 
@@ -49,6 +47,14 @@ app.use("/api/v1/admin", adminRoutes);
 const PORT = process.env.PORT || 5000;
 
 //listing server
-app.listen(PORT, () => {
-  console.log(`server running on port ${PORT}`);
+const startServer = async () => {
+  await connectDb();
+  app.listen(PORT, () => {
+    console.log(`server running on port ${PORT}`);
+  });
+};
+
+startServer().catch((error) => {
+  console.error("Failed to start server:", error.message);
+  process.exit(1);
 });

@@ -42,3 +42,13 @@ sign in again if that secret changes.
 
 The frontend and API are deployed separately. The Vercel project uses `client`
 as its root directory.
+
+### Accounts and login
+
+Create a regular account through the app's Sign-up page, then log in with that
+account. `admin-user-example.json` is only an example document; it is not
+automatically inserted into MongoDB.
+
+If login or registration is unavailable, check the Render service logs and
+confirm `MONGO_URL` points to an active MongoDB cluster with network access
+allowed from Render. Keep the connection string private.

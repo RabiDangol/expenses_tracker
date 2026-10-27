@@ -12,7 +12,9 @@ const loginController = async (req, res) => {
     }
     const user = await userModel.findOne({ email, password });
     if (!user) {
-      return res.status(404).send("User Not found");
+      return res
+        .status(401)
+        .json({ success: false, message: "Invalid email or password" });
     }
     // Generate JWT token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
@@ -25,9 +27,9 @@ const loginController = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(400).json({
+    res.status(500).json({
       success: false,
-      error,
+      message: "Unable to log in right now. Please try again later.",
     });
   }
 };
@@ -42,9 +44,26 @@ const registerController = async (req, res) => {
       newUser,
     });
   } catch (error) {
-    res.status(400).json({
+    if (error.code === 11000) {
+      return res.status(409).json({
+        success: false,
+        message: "An account with this email already exists.",
+      });
+    }
+
+    if (error.name === "ValidationError") {
+      return res.status(400).json({
+        success: false,
+        message: Object.values(error.errors)
+          .map(({ message }) => message)
+          .join(", "),
+      });
+    }
+
+    console.error(error);
+    res.status(500).json({
       success: false,
-      error,
+      message: "Unable to create an account right now. Please try again later.",
     });
   }
 };

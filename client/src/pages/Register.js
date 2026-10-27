@@ -12,12 +12,15 @@ const Register = () => {
         try {
             setLoading(true)
             await axios.post('/users/register',values)
-            message.success('Sign-in Successfull')
+            message.success('Account created successfully')
             setLoading(false)
             navigate('/login')
         } catch (error) {
             setLoading(false)
-            message.error('Something went wrong');
+            message.error(
+                error.response?.data?.message ||
+                'Cannot reach the API. Check the API service and try again.'
+            );
         }
     };
 

@@ -1,13 +1,14 @@
 
-import mongoose from 'mongoose'
-import colors from 'colors'
-const connectDb = async () =>{
-    try{
-        const conn = await mongoose.connect(process.env.MONGO_URL);
-        console.log(`server Running On ${conn.connection.host}`.bgCyan.white);
-    }catch(error){
-        console.log(`${error}`.bgRed)
-    }
+import mongoose from "mongoose";
+import colors from "colors";
+
+const connectDb = async () => {
+  if (!process.env.MONGO_URL) {
+    throw new Error("MONGO_URL is not configured");
+  }
+
+  const conn = await mongoose.connect(process.env.MONGO_URL);
+  console.log(`MongoDB connected: ${conn.connection.host}`.bgCyan.white);
 };
 export default connectDb;
 

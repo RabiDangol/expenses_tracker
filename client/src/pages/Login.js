@@ -14,10 +14,7 @@ const Login = ({ redirectTo }) => {
       const { data } = await axios.post("/users/login", values);
       setLoading(false);
       message.success(" login Success");
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ ...data.user, Password: "" })
-      );
+      localStorage.setItem("user", JSON.stringify(data.user));
       if (data.token) {
         localStorage.setItem("token", data.token);
       }
